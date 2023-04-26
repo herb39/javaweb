@@ -85,5 +85,19 @@ public class LoginDAO {
 		}		
 		return vo;
 	}
+
+	// 방문 포인트 증가
+	public void setPointPlus(String mid) {
+		try {
+			sql = "update login set point = point + 10, lastDate = now(), todayCount=? where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}	
+	}
 	
 }
