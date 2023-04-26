@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>title</title>
+	<title>login.jsp</title>
 	<jsp:include page="/include/bs4.jsp" />
 </head>
 <body>
