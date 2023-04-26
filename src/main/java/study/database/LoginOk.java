@@ -2,6 +2,8 @@ package study.database;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,21 +26,44 @@ public class LoginOk extends HttpServlet{
 		
 		PrintWriter out = response.getWriter();
 		
+		Date today = new Date();
+		SimpleDateFormat sdfToday = new SimpleDateFormat("yyyy-MM-dd");
+		String strNowDate = sdfToday.format(today);
+		
+		int todayCount = vo.getTodayCount();
+		int point = vo.getPoint();
+		String lastDate = vo.getLastDate();
+		
+		
 		if (vo.getName() != null) {
 			// 회원 인증 성공
 			// 방문 포인트 / 최종 접속일 / 방문 카운트 처리
 			// db 최종접속일(10자리)와 시스템날짜(10자리) 비교
 			// 같으면 todayCount = vo.getTodayCount()+1 / 다르면 todayCount = 0
 			// dao.setPointPlus(mid, todayCount);
-			dao.setPointPlus(mid);
 			
 			// 1. 자주 사용하는 자료 세션에 저장(아이디, 성명, 닉네임)
 			HttpSession session = request.getSession();
 			session.setAttribute("sMid", mid);
 			session.setAttribute("sName", vo.getName());
-			session.setAttribute("sPoint", vo.getPoint()+10);
+			session.setAttribute("sPoint", vo.getPoint());
+			session.setAttribute("sTodayCount", vo.getTodayCount());
 			session.setAttribute("sLastDate", vo.getLastDate());
-			session.setAttribute("sTodayCount", vo.getTodayCount()+1);
+			
+			
+			if (vo.getLastDate().substring(0, 10).equals(strNowDate)) {
+				todayCount++;
+				if (todayCount <= 5) {
+					point = point + 10;					
+				}
+			} else {
+				todayCount = 1;
+				point = point + 10;
+			}
+			
+			dao.setPointPlus(mid, point, todayCount);
+			
+			vo = dao.getLoginCheck(mid, pwd);
 			
 			out.print("<script>");
 			out.print("alert('"+mid+"님 로그인 되었습니다.');");
