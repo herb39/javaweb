@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 // DB에 관련된 것만!!
 public class LoginDAO {
@@ -100,6 +103,138 @@ public class LoginDAO {
 		} finally {
 			pstmtClose();
 		}	
+	}
+
+	// 아이디 검색 (아이디 중복 체크)	
+	public LoginVO getMidCheck(String mid) {
+		LoginVO vo = new LoginVO();
+		try {
+			sql = "select * from login where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setName(rs.getString("name"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setLastDate(rs.getString("lastDate"));
+				vo.setTodayCount(rs.getInt("todayCount"));
+				
+//				Date today = new Date();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        String strToday = sdf.format(today);        
+//        String lastDate = vo.getLastDate();
+//        if(!strToday.equals(lastDate.substring(0,10))) vo.setTodayCount(0);
+				vo.setTodayCount(compareDate(vo.getLastDate(), vo.getTodayCount()));
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vo;
+	}
+
+	// 회원가입
+	public void setJoinOk(LoginVO vo) {
+		try {
+			sql = "insert into login values (default,?,?,?,default,default,default)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getMid());
+			pstmt.setString(2, vo.getPwd());
+			pstmt.setString(3, vo.getName());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+	}
+
+	// 전체 회원 조회
+	public ArrayList<LoginVO> getLoginList() {
+		ArrayList<LoginVO> vos = new ArrayList<>();		
+		try {
+			sql = "select * from login order by idx desc";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				vo = new LoginVO();
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setName(rs.getString("name"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setLastDate(rs.getString("lastDate"));
+				vo.setTodayCount(rs.getInt("todayCount"));
+				
+//				Date today = new Date();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        String strToday = sdf.format(today);        
+//        String lastDate = vo.getLastDate();
+//        if(!strToday.equals(lastDate.substring(0,10))) vo.setTodayCount(0);
+				vo.setTodayCount(compareDate(vo.getLastDate(), vo.getTodayCount()));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vos;
+	}
+
+	// 날짜 비교
+	private int compareDate(String lastDate, int todayCount) {
+		Date today = new Date();
+	  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	  String strToday = sdf.format(today);        
+//	  String lastDate = vo.getLastDate();
+	  if(!strToday.equals(lastDate.substring(0,10))) todayCount = 0;
+	  
+		return todayCount;
+	}
+
+	// 개인 정보 수정
+	public int setUpdateOk(LoginVO vo) {
+		int res = 0;
+		try {
+			sql = "update login set pwd = ?, name = ? where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getPwd());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getMid());
+			pstmt.executeUpdate();
+			res = 1;
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		
+		return res;
+	}
+
+
+	public int setDeleteOk(String mid) {
+		int res = 0;
+		try {
+			sql = "delete from login where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			pstmt.executeUpdate();
+			res = 1;
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
 	}
 	
 }
