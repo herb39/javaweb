@@ -2,6 +2,7 @@
 show tables;
 
 desc sungjuk;
+
 select * from sungjuk;
 
 create table login (
@@ -19,6 +20,9 @@ desc login;
 insert into login values (default, "admin", "1234", "관리자", default, default, default);
 
 select * from login;
+
+drop table login;
+
 
 
 

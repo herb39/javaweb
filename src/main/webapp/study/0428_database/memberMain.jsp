@@ -16,7 +16,7 @@
 		<h2>회원 전용 페이지</h2>
 		<p>현재 ${sMid}(${sName})님 로그인 중입니다.</p>
 		<hr />
-		<p>보유 포인트 : ${sPoint} / 최종 접속일 : ${fn:substring(sLastDate,0,16)} / 오늘 방문횟수 : ${sTodayCount}회</p>
+		<p>보유 포인트 : ${sPoint} / 최종 접속일 : ${fn:substring(sLastDate, 0, 16)} / 오늘 방문횟수 : ${sTodayCount}회</p>
 		<hr />
 		<p><img src="${ctp}/images/2.jpg" width="300px"></p>
 		<hr />
