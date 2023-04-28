@@ -19,22 +19,19 @@ public class LoginOk extends HttpServlet{
 		String mid = request.getParameter("mid") == null ? "" : request.getParameter("mid");
 		String pwd = request.getParameter("pwd") == null ? "" : request.getParameter("pwd");
 		
-		LoginDAO dao = new LoginDAO();
-		
+		LoginDAO dao = new LoginDAO();		
 		LoginVO vo = dao.getLoginCheck(mid, pwd);
 		
 		PrintWriter out = response.getWriter();
-		
-		Date today = new Date();
-		SimpleDateFormat sdfToday = new SimpleDateFormat("yyyy-MM-dd");
-		String strNowDate = sdfToday.format(today);
-		
-		
-		if (vo.getName() != null) {
+						
+		if (vo.getName() != null) {		// 회원 인증 성공
+			Date today = new Date();
+			SimpleDateFormat sdfToday = new SimpleDateFormat("yyyy-MM-dd");
+			String strNowDate = sdfToday.format(today);
+			
 			int todayCount = vo.getTodayCount();
 			int point = vo.getPoint();
 			String lastDate = vo.getLastDate();
-			// 회원 인증 성공
 			// 방문 포인트 / 최종 접속일 / 방문 카운트 처리
 			// db 최종접속일(10자리)와 시스템날짜(10자리) 비교
 			// 같으면 todayCount = vo.getTodayCount()+1 / 다르면 todayCount = 0
@@ -66,8 +63,12 @@ public class LoginOk extends HttpServlet{
 			out.print("alert('"+mid+"님 로그인 되었습니다.');");
 			out.print("location.href='"+request.getContextPath()+"/study/0428_database/memberMain.jsp';");
 			out.print("</script>");
-		} else {
-			// 회원 인증 실패
+		} else {	// 회원 인증 실패
+			vo = dao.getMidCheck(mid);
+			int failCount = vo.getFailCount();
+			
+//			dao.failCount(failCount, mid);
+			
 			out.print("<script>");
 			out.print("alert('로그인 실패');");
 			out.print("location.href='"+request.getContextPath()+"/study/0428_database/login.jsp';");

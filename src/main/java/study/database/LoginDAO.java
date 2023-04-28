@@ -64,7 +64,7 @@ public class LoginDAO {
 		vo = new LoginVO();
 		
 		try {
-			sql = "select * from login where mid=? and pwd=?";
+			sql = "select * from login where mid = ? and pwd= ?";
 			pstmt = conn.prepareStatement(sql);
 			// (?번째 물음표, 넣을값)
 			pstmt.setString(1, mid);
@@ -192,10 +192,10 @@ public class LoginDAO {
 	// 날짜 비교
 	private int compareDate(String lastDate, int todayCount) {
 		Date today = new Date();
-	  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	  String strToday = sdf.format(today);        
-//	  String lastDate = vo.getLastDate();
-	  if(!strToday.equals(lastDate.substring(0,10))) todayCount = 0;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String strToday = sdf.format(today);        
+//	 	String lastDate = vo.getLastDate();
+		if(!strToday.equals(lastDate.substring(0,10))) todayCount = 0;
 	  
 		return todayCount;
 	}
@@ -220,7 +220,7 @@ public class LoginDAO {
 		return res;
 	}
 
-
+	// 회원탈퇴 ()
 	public int setDeleteOk(String mid) {
 		int res = 0;
 		try {
@@ -236,5 +236,12 @@ public class LoginDAO {
 		}
 		return res;
 	}
+
+
+	public void failCount(int failCount, String mid) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }
