@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+   Cookie[] cookies = request.getCookies();  // 저장된 쿠키를 배열로 받아온다!
+   
+   if(cookies != null) {  // NullPointerException 오류가 발생할 수 있기 때문에 != 조건을 준다.
+      for(int i=0; i<cookies.length; i++) {
+         if(cookies[i].getName().equals("cMid")){  // cookie 배열에 있는 값이 저장된 cMid와 같다면
+            pageContext.setAttribute("mid", cookies[i].getValue()); // pageContext에 그 값을 저장하고 mid에 value로 찍어주면 아이디 저장완료! 
+            break;
+         }
+      }
+   }
+%>
 <c:set var="ctp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -27,9 +39,10 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="로그인" class="btn btn-success">
-						<input type="button" value="회원가입" onclick="location.href='join.jsp';" class="btn btn-primary ml-3"><br />
-						<input type="reset" value="다시입력" class="btn btn-warning m-2">
+						<input type="submit" value="로그인" class="btn btn-success mr-3">
+						<input type="checkbox" value="idSave"> 아이디 저장<br />
+						<input type="button" value="회원가입" onclick="location.href='join.jsp';" class="btn btn-primary mt-2 mr-3">
+						<a href="findPwd.jsp" id="findPwd"><span class="findPwd">비밀번호를 잊으셨나요?</span></a>
 					</td>
 				</tr>
 			</table>

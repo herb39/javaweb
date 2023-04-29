@@ -102,7 +102,7 @@ public class LoginDAO {
 			System.out.println("SQL 오류 : " + e.getMessage());
 		} finally {
 			pstmtClose();
-		}	
+		}
 	}
 
 	// 아이디 검색 (아이디 중복 체크)	
@@ -122,6 +122,7 @@ public class LoginDAO {
 				vo.setPoint(rs.getInt("point"));
 				vo.setLastDate(rs.getString("lastDate"));
 				vo.setTodayCount(rs.getInt("todayCount"));
+				vo.setFailCount(rs.getInt("failCount"));
 				
 //				Date today = new Date();
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -141,7 +142,7 @@ public class LoginDAO {
 	// 회원가입
 	public void setJoinOk(LoginVO vo) {
 		try {
-			sql = "insert into login values (default,?,?,?,default,default,default)";
+			sql = "insert into login values (default,?,?,?,default,default,default,default)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getPwd());
@@ -239,7 +240,17 @@ public class LoginDAO {
 
 
 	public void failCount(int failCount, String mid) {
-		// TODO Auto-generated method stub
+		try {
+			sql = "update login set failCount = ? where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, failCount);
+			pstmt.setString(2, mid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
 		
 	}
 

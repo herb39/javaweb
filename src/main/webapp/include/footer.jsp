@@ -5,6 +5,8 @@
 <style>
 	.fa {
 		font-size: 30px;
+		cursor: pointer;
+		margin-right: 5px;
 	}
 </style>
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey">

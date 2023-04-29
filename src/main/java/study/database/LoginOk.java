@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,20 +61,43 @@ public class LoginOk extends HttpServlet{
 			session.setAttribute("sTodayCount", vo.getTodayCount());
 			session.setAttribute("sLastDate", vo.getLastDate());
 
+			String idSave = request.getParameter("idSave") != null ? "on" : "off";
+      System.out.println("idSave : " + idSave);
+      Cookie cookieMid = new Cookie("cMid", mid);
+      cookieMid.setPath("/");
+      if(idSave.equals("on")) {
+          cookieMid.setMaxAge(60*60*24*7);
+      } else {
+          cookieMid.setMaxAge(0);
+      }
+      response.addCookie(cookieMid);
+			
 			out.print("<script>");
 			out.print("alert('"+mid+"님 로그인 되었습니다.');");
 			out.print("location.href='"+request.getContextPath()+"/study/0428_database/memberMain.jsp';");
 			out.print("</script>");
-		} else {	// 회원 인증 실패
+		} else {			// 회원 인증 실패
 			vo = dao.getMidCheck(mid);
 			int failCount = vo.getFailCount();
 			
-//			dao.failCount(failCount, mid);
+			if (failCount < 4) {
+				failCount++;
+				dao.failCount(failCount, mid);
+				
+				out.print("<script>");
+				out.print("alert('"+failCount+"회 틀림');");
+				out.print("location.href='"+request.getContextPath()+"/study/0428_database/login.jsp';");
+				out.print("</script>");
+			} else {
+				failCount = 0;
+				dao.failCount(failCount, mid);
+				
+				out.print("<script>");
+				out.print("alert('5회틀림 비밀번호찾기 ㄱㄱ');");
+				out.print("location.href='"+request.getContextPath()+"/study/0428_database/findPwd.jsp';");
+				out.print("</script>");
+			}			
 			
-			out.print("<script>");
-			out.print("alert('로그인 실패');");
-			out.print("location.href='"+request.getContextPath()+"/study/0428_database/login.jsp';");
-			out.print("</script>");
 		}
 	}
 }
