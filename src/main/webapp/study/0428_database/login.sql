@@ -17,13 +17,11 @@ create table login (
 
 desc login;
 
-insert into login values (default, "admin", "1234", "관리자", default, default, default);
+insert into login values (default, "kms1234", "1234", "김말숙", default, default, default, default);
 
 select * from login;
 
-drop table login;
-
-
+alter table login add failCount int default 0;
 
 
 

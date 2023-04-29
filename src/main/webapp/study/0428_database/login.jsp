@@ -19,7 +19,7 @@
 				</tr>
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" name="mid" autofocus required class="form-control"></td>
+					<td><input type="text" name="mid" size="20" autofocus required class="form-control"></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
