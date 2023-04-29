@@ -27,9 +27,9 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="로그인" class="btn btn-success m-2">
+						<input type="submit" value="로그인" class="btn btn-success">
+						<input type="button" value="회원가입" onclick="location.href='join.jsp';" class="btn btn-primary ml-3"><br />
 						<input type="reset" value="다시입력" class="btn btn-warning m-2">
-						<input type="button" value="회원가입" onclick="location.href='join.jsp';" class="btn btn-primary m-2">
 					</td>
 				</tr>
 			</table>

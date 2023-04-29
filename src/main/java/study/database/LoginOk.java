@@ -37,7 +37,7 @@ public class LoginOk extends HttpServlet{
 			// 회원 인증 성공
 			// 방문 포인트 / 최종 접속일 / 방문 카운트 처리
 			// db 최종접속일(10자리)와 시스템날짜(10자리) 비교
-			// 같으면 todayCount = vo.getTodayCount()+1 / 다르면 todayCount = 0
+			// 같으면 todayCount = vo.getTodayCount()+1 / 다르면 todayCount = 1
 			// dao.setPointPlus(mid, todayCount);			
 
 			if (lastDate.substring(0, 10).equals(strNowDate)) {
