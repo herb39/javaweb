@@ -33,7 +33,7 @@
 				  <button type="button" class="btn text-light dropdown-toggle" data-toggle="dropdown">Study2</button>
 				  <div class="dropdown-menu">
 				    <a class="dropdown-item" href="#">URL 매핑</a>
-				    <a class="dropdown-item" href="#">Link 2</a>
+				    <a class="dropdown-item" href="#">로그인연습3</a>
 				    <a class="dropdown-item" href="#">Link 3</a>
 				  </div>
 				</div>
