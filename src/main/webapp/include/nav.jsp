@@ -21,8 +21,10 @@
 				  <button type="button" class="btn text-light dropdown-toggle" data-toggle="dropdown">Study1</button>
 				  <div class="dropdown-menu">
 				    <a class="dropdown-item" href="${pageContext.request.contextPath}/study/0428_database/login.jsp">로그인연습</a>
-				    <a class="dropdown-item" href="#">Link 2</a>
-				    <a class="dropdown-item" href="#">Link 3</a>
+				    <a class="dropdown-item" href="${pageContext.request.contextPath}/mapping/Test1">URL 매핑(디렉토리패턴)</a>
+				    <a class="dropdown-item" href="${pageContext.request.contextPath}/mapping/Test5.do">URL 매핑(확장자패턴)</a>
+				    <a class="dropdown-item" href="${pageContext.request.contextPath}/mapping2/Test5.mi">URL 매핑(확장자패턴)</a>
+				    <a class="dropdown-item" href="${pageContext.request.contextPath}/study/0428_database/Login.re">로그인연습2</a>
 				  </div>
 				</div>
       </li>
