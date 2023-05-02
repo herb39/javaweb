@@ -8,9 +8,7 @@ public class LoginVO {
 	private int point;
 	private String lastDate;
 	private int todayCount;
-	private int failCount;
 	
- 
 	public int getIdx() {
 		return idx;
 	}
@@ -53,16 +51,10 @@ public class LoginVO {
 	public void setTodayCount(int todayCount) {
 		this.todayCount = todayCount;
 	}
-	public int getFailCount() {
-		return failCount;
-	}
-	public void setFailCount(int failCount) {
-		this.failCount = failCount;
-	}	
 	
 	@Override
 	public String toString() {
 		return "LoginVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", name=" + name + ", point=" + point
-				+ ", lastDate=" + lastDate + ", todayCount=" + todayCount + ", failCount=" + failCount + "]";
+				+ ", lastDate=" + lastDate + ", todayCount=" + todayCount + "]";
 	}
 }

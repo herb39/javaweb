@@ -1,19 +1,23 @@
 package study2.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import study.database.LoginDAO;
 import study.database.LoginVO;
 
-public class LoginJoinOkCommand implements LoginInterface {
+public class UpdateOkCommand implements LoginInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
+		HttpSession session = request.getSession();
+		
+		String mid = (String) session.getAttribute("sMid");
 		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd");
 		String name = request.getParameter("name")==null ? "" : request.getParameter("name");
 		
@@ -25,23 +29,16 @@ public class LoginJoinOkCommand implements LoginInterface {
 		
 		LoginDAO dao = new LoginDAO();
 		
-		LoginVO vo2 = dao.getMidCheck(mid);
+		int res = dao.setUpdateOk(vo);
 		
-		String msg = "", url = "";
-		if(vo2.getMid() != null) {
-			// 아이디가 중복되었음.
-			msg = "아이디가 중복되었습니다.";
-			url = "/Join.re";
+		if(res == 1) {
+			session.setAttribute("sName", name);
+			request.setAttribute("msg", "개인정보가 수정되었습니다.");
 		}
 		else {
-			// 아이디가 중복되어 있지 않기에 DB에 정보를 저장시킨다.
-			dao.setJoinOk(vo);
-			msg = "회원 가입되었습니다.";
-			url = "/Login.re";
+			request.setAttribute("msg", "개인정보가 수정 실패~~~");
 		}
-		
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", request.getContextPath()+url);
+		request.setAttribute("url", request.getContextPath()+"/MemberMain.re");
 	}
 
 }
