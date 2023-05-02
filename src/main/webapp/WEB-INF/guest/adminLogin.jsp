@@ -22,7 +22,7 @@
   <form name="myform" method="post" action="${ctp}/AdminLoginOk.gu">
 	  <h2 class="text-center">관리자 로그인</h2>
 	  <table class="table table-bordered">
-	    <tr>
+	    <tr> 
 	      <th>관리자아이디</th>
 	      <td><input type="text" name="mid" id="mid" class="form-control" required /></td>
 	    </tr>
