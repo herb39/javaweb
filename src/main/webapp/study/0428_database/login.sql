@@ -5,7 +5,7 @@ desc sungjuk;
 
 select * from sungjuk;
 
-create table login (
+create table login 
 	idx int not null auto_increment primary key,			/* 고유번호 */
 	mid varchar(20) not null,					/* 아이디 */
 	pwd varchar(20) not null,					/* 비밀번호 */
