@@ -40,6 +40,10 @@ public class GuestController extends HttpServlet{
 		} else if (com.equals("/AdminLogout")) {
 			command = new AdminLogoutCommand();
 			command.execute(request, response);
+			viewPage = "/include/message.jsp";				
+		} else if (com.equals("/GuestDelete")) {
+			command = new GuestDeleteCommand();
+			command.execute(request, response);
 			viewPage = "/include/message.jsp";		
 		}
 		

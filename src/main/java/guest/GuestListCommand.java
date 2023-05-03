@@ -43,7 +43,7 @@ public class GuestListCommand implements GuestInterface {
 		int lastBlock = (totPage - 1) / blockSize;
 		
 				
-		// 지정된 페이지의 자료를 요청한 한 페이지의 분량만 가져옴
+		// 지정된 페이지의 자료를 요청한 페이지의 분량만 가져옴
 		ArrayList<GuestVO> vos = dao.getGuestList(startIndexNo, pageSize);
 		
 		request.setAttribute("vos", vos);
