@@ -18,21 +18,21 @@
 	    <div class="form-group">
 	      <label for="uname">성명</label>
 	      <input type="text" class="form-control" id="name" placeholder="Enter username" name="name" required />
-	      <div class="valid-feedback">Ok</div>
+	      <div class="valid-feedback"> </div>
 	      <div class="invalid-feedback">성명을 입력해주세요.</div>
 	    </div>
 	    <div class="form-group">
-	      <label for="uname">Email</label>
+	      <label for="uname">이메일</label>
 	      <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" />
 	    </div>
 	    <div class="form-group">
-	      <label for="uname">Homepage</label>
+	      <label for="uname">홈페이지</label>
 	      <input type="text" class="form-control" id="homePage" placeholder="Enter Homepage" name="homePage" value="https://" />
 	    </div>
 	    <div class="form-group">
 	      <label for="pwd">방문소감</label>
 	      <textarea rows="5" name="content" id="content" required class="form-control"></textarea>
-	      <div class="valid-feedback">Ok</div>
+	      <div class="valid-feedback"> </div>
 	      <div class="invalid-feedback">방문소감을 입력해주세요.</div>
 	    </div>
 	    <div class="form-group text-center">

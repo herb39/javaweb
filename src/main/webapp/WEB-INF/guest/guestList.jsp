@@ -94,7 +94,6 @@
 					<td colspan="3">
 						<c:if test="${empty vo.email || fn:length(vo.email)<5 || fn:indexOf(vo.email,'@')==-1 || fn:indexOf(vo.email,'.') == -1}">- 없음 -</c:if>
 						<c:if test="${!empty vo.email && fn:length(vo.email)>=5 && fn:indexOf(vo.email,'@')!=-1 && fn:indexOf(vo.email,'.') != -1}">${vo.email}</c:if>
-						${vo.email}
 					</td>
 				</tr>
 				<tr>

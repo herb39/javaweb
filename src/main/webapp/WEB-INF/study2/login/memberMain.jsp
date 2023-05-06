@@ -36,7 +36,7 @@
   <br/>
   <p>현재 ${sMid}(${sName})님 로그인 중이십니다.</p>
   <hr/>
-  <p>보유 포인트 : ${sPoint} / 최종 접속인 ${fn:substring(sLastDate,0,16)} / 오늘 접속횟수 : ${sTodayCount}회</p>
+  <p>보유 포인트 : ${sPoint} / 최종 접속 ${fn:substring(sLastDate,0,16)} / 오늘 접속횟수 : ${sTodayCount}회</p>
   <hr/>
   <c:set var="random"><%=(int)(Math.random()*6)+1%></c:set>
   <p><img src="${ctp}/images/${random}.jpg" width="300px"/></p>

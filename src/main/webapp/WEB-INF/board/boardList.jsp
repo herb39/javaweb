@@ -22,7 +22,7 @@
 <jsp:include page="/include/header.jsp" />
 <p><br/></p>
 <div class="container">
-  <h2 class="text-center">게 시 판 리 스 트</h2>
+  <h2 class="text-center">게 시 판</h2>
   <table class="table table-borderless">
     <tr>
       <td><a href="${ctp}/BoardInput.bo" class="btn btn-primary btn-sm">글쓰기</a></td>
@@ -40,11 +40,11 @@
   </table>
   <table class="table table-hover text-center">
     <tr class="table-dark text-dark">
-      <th>글번호</th>
-      <th>글제목</th>
+      <th>번호</th>
+      <th>제목</th>
       <th>글쓴이</th>
-      <th>글쓴날짜</th>
-      <th>조회수</th>
+      <th>작성</th>
+      <th>조회</th>
       <th>좋아요</th>
     </tr>
     <c:forEach var="vo" items="${vos}" varStatus="st">

@@ -48,6 +48,6 @@
   </context-param>
   <context-param>
     <param-name>homeAddress</param-name>
-    <param-value>http://192.168.50.20:9090/javaweb/</param-value>
+    <param-value>http://localhost:9090/javaweb/</param-value>
   </context-param>
 </web-app>
