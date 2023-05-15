@@ -80,6 +80,7 @@ public class MemberJoinOkCommand implements MemberInterface {
 		vo.setEmail(email);
 		vo.setHomePage(homePage);
 		vo.setJob(job);
+		vo.setHobby(hobby);
 		vo.setPhoto(photo);
 		vo.setContent(content);
 		vo.setUserInfor(userInfor);

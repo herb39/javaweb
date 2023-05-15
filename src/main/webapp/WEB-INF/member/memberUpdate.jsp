@@ -45,11 +45,11 @@
 		let submitFlag = 0; // 모든 체크 정상 종료 -> submitFlag : 1로 변경 
 		
 		// 앞의 정규식으로 정의된 부분에 대한 유효성 체크
-		if (!regNickName.test(nickName)) {
+		/* if (!regNickName.test(nickName)) {
 			alert("닉네임은 한글과 영어 대/소문자만 사용 가능합니다.");
 			myform.nickName.focus();
 			return false;
-		} else if (!regName.test(name)) {
+		} else */ if (!regName.test(name)) {
 			alert("성명은 한글만 사용 가능합니다.");	
 			myform.name.focus();
 			return false;
@@ -67,7 +67,7 @@
 			}
 		}
 		
-		if (tel2 != "" && tel3 != "") {
+		/* if (tel2 != "" && tel3 != "") {
 			if (!regTel.test(tel)) {
 				alert("전화번호 형식을 확인하세요.(000-0000-0000)");
 				myform.tel2.focus();
@@ -75,12 +75,12 @@
 			} else {
 				submitFlag = 1;
 			}
-		} else {
+		} else { */
 			tel2 = " ";
 			tel3 = " ";
 			tel = tel1 + "-" + tel2 + "-" + tel3;
 			submitFlag = 1;
-		}
+		/* } */
 		
 		// 주소 하나로 묶기
 		let postcode = myform.postcode.value + " ";

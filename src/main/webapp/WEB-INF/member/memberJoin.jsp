@@ -269,42 +269,42 @@
 			<div class="form-check-inline">
 				<span class="input-group-text">취미</span> &nbsp; &nbsp;
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="등산" name="hobby" />등산
+					<input type="checkbox" class="form-check-input" value="등산" name="hobby"/>등산
 				</label>
 			</div>
 			<div class="form-check-inline">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="낚시" name="hobby" />낚시
+					<input type="checkbox" class="form-check-input" value="낚시" name="hobby"/>낚시
 				</label>
 			</div>
 			<div class="form-check-inline">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="수영" name="hobby" />수영
+					<input type="checkbox" class="form-check-input" value="수영" name="hobby"/>수영
 				</label>
 			</div>
 			<div class="form-check-inline">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="독서" name="hobby" />독서
+					<input type="checkbox" class="form-check-input" value="독서" name="hobby"/>독서
 				</label>
 			</div>
 			<div class="form-check-inline">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="영화감상" name="hobby" />영화감상
+					<input type="checkbox" class="form-check-input" value="영화감상" name="hobby"/>영화감상
 				</label>
 			</div>
 			<div class="form-check-inline">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="바둑" name="hobby" />바둑
+					<input type="checkbox" class="form-check-input" value="바둑" name="hobby"/>바둑
 				</label>
 			</div>
 			<div class="form-check-inline">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="축구" name="hobby" />축구
+					<input type="checkbox" class="form-check-input" value="축구" name="hobby"/>축구
 				</label>
 			</div>
 			<div class="form-check-inline">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" value="기타" name="hobby" checked />기타
+					<input type="checkbox" class="form-check-input" value="기타" name="hobby" checked/>기타
 				</label>
 			</div>
 		</div>
@@ -334,6 +334,7 @@
 		<button type="button" class="btn btn-secondary" onclick="location.href='${ctp}';">돌아가기</button>
 		<input type="hidden" name="email" />
 		<input type="hidden" name="tel" />
+		<input type="hidden" name="address" />
 	</form>
 </div>
 <p><br /></p>

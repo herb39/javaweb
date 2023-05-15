@@ -27,7 +27,7 @@
 			<tr><td>홈페이지 : ${vo.homePage}</td></tr>
 			<tr><td>직업 : ${vo.job}</td></tr>
 			<tr><td>취미 : ${vo.hobby}</td></tr>
-			<tr><td>사진 : <img src="${ctp}/images/${vo.photo}" width="100px" /></td></tr>
+			<tr><td>사진 : <img src="${ctp}/images/member/${vo.photo}" width="100px"/></td></tr>
 			<tr><td>자기소개 : ${vo.content}</td></tr>
 			<tr><td>정보공개여부 : ${vo.userInfor}</td></tr>
 			<tr><td>탈퇴신청여부 : ${vo.userDel}</td></tr>
